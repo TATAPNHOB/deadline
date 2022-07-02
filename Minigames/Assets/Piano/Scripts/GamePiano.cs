@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePiano : MonoBehaviour
+public class GamePiano : Minigame
 {
     public AudioSource[] NoteDict;//
     public UnityEngine.UI.Button[] notes;//= new GameObject[17];
@@ -34,6 +34,7 @@ public class GamePiano : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         if (index_playing_note==SELECTED_notes.Length)
         {
             bool check = true;
