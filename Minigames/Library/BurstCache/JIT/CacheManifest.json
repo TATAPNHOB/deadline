@@ -3,7 +3,7 @@
   "Assemblies": [
     {
       "FullName": "Unity.2D.Animation.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-07-01T18:16:31.5225163Z"
+      "LastWriteTime": "2022-07-02T17:23:11.445722Z"
     },
     {
       "FullName": "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -11,15 +11,15 @@
     },
     {
       "FullName": "Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-07-01T18:16:31.5265051Z"
+      "LastWriteTime": "2022-07-02T17:23:11.1788024Z"
+    },
+    {
+      "FullName": "Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "LastWriteTime": "2022-07-02T17:23:11.4646724Z"
     },
     {
       "FullName": "UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "LastWriteTime": "2022-06-14T10:03:50Z"
-    },
-    {
-      "FullName": "Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-07-01T18:16:31.5125425Z"
     },
     {
       "FullName": "netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51",
@@ -30,16 +30,16 @@
       "LastWriteTime": "2022-06-14T10:03:50Z"
     },
     {
+      "FullName": "mscorlib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "LastWriteTime": "2022-06-14T09:41:32Z"
+    },
+    {
       "FullName": "Unity.2D.Common.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-07-01T18:16:31.509551Z"
+      "LastWriteTime": "2022-07-02T17:23:10.278188Z"
     },
     {
       "FullName": "Unity.2D.SpriteShape.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-07-01T18:16:31.417796Z"
-    },
-    {
-      "FullName": "mscorlib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-06-14T09:41:32Z"
+      "LastWriteTime": "2022-07-02T17:23:10.9533818Z"
     },
     {
       "FullName": "UnityEngine.SpriteShapeModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -69,13 +69,14 @@
       "LinkName": "7D2E04AB7759F565",
       "AssemblyDependencyIndices": [
         0,
-        4,
+        7,
         1,
         6,
         2,
         5,
-        7,
-        3
+        3,
+        8,
+        4
       ]
     },
     {
@@ -85,11 +86,10 @@
       "LinkName": "104599FDEEB36FAE",
       "AssemblyDependencyIndices": [
         6,
-        8,
         9,
         5,
         10,
-        7,
+        8,
         1,
         2
       ]
@@ -100,7 +100,7 @@
       "ModuleHash": "fa98afef28c02a6c1c3e44c5c790b70b",
       "LinkName": "801E9A000BB37B05",
       "AssemblyDependencyIndices": [
-        4,
+        3,
         5,
         1
       ]
@@ -111,7 +111,7 @@
       "ModuleHash": "fb38d6484c3032d67864ce18487c3ed2",
       "LinkName": "CDCA4A5193BE5947",
       "AssemblyDependencyIndices": [
-        4,
+        3,
         5,
         1
       ]
@@ -126,10 +126,10 @@
         1,
         6,
         2,
-        4,
+        3,
         5,
-        7,
-        3
+        8,
+        4
       ]
     }
   ]
