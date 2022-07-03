@@ -10,17 +10,28 @@ public class Minigame : MonoBehaviour
     //для зачёта общего времени
     static class Timer
     {
-        
+
         static float time;//1 unit == 1 sec
 
-        public static bool IsRunning{ get{ return time > 0; } set{ } }
+        public static bool IsActive = false;
+
+        public static bool IsRunning { get { return time > 0; } set { } }
 
         static Timer()
         {
 
             Reset();//Start Time
         }
-        
+
+        public static void Start()
+        {
+            IsActive = true;
+        }
+
+        public static void Stop()
+        {
+            IsActive = false;
+        }
 
         public static void Reset()
         {
@@ -44,9 +55,9 @@ public class Minigame : MonoBehaviour
         }
         public static string Update()
         {
-            if (!IsRunning) return " ";
+            if (!IsRunning && !IsActive) return " ";
             time -= Time.deltaTime;
-            //Debug.Log(time);
+            Debug.Log(time);
 
             return (Convert.ToString(Convert.ToInt32(time)));
 
@@ -60,11 +71,12 @@ public class Minigame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        Timer.Reset();
+        Timer.Stop();
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected void Update_MAIN()
     {
         
         label_timer.text = Timer.Update();

@@ -1686,6 +1686,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beatTemp: 180
+  Arrows:
+  - {fileID: 1492499078990398533, guid: 959747a3f7907ae488e41a1d9577ddea, type: 3}
+  - {fileID: 768351006250305391, guid: 428979a576fe8f04bb5210fa34602a0c, type: 3}
+  - {fileID: 9121320848377692434, guid: a5db55f61aad2e4459eefdb2e2bdc217, type: 3}
+  - {fileID: 3407150562920814806, guid: f23b31b93de63814f9d38767ddacf185, type: 3}
   IsStarted: 0
 --- !u!4 &1759981111
 Transform:
