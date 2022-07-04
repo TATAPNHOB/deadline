@@ -10,6 +10,9 @@ public class Coffee : MonoBehaviour
     int waitTime;
     float delayTime = 4;
     float startTime;
+    public SpriteRenderer machine;
+    public Sprite under_sprite;
+    public Sprite over_sprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,14 +22,16 @@ public class Coffee : MonoBehaviour
 
     public void Stop_coffee(){
         float playerWaitTime = Time.time - startTime;
-        float error = Mathf.Abs(waitTime - playerWaitTime);
+        float error = waitTime - playerWaitTime;
         if(error<0)
         {
-            res_lbl.text = $"Переварил {error} секунд";
+            res_lbl.text = $"Переварил {-error} секунд";
+            machine.sprite = over_sprite;
         }
         else if(error>0)
         {
             res_lbl.text = $"Недоварил {error} секунд";
+            machine.sprite = under_sprite;
         }
         else
         {
