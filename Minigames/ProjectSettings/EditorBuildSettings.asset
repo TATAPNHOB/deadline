@@ -8,4 +8,25 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Main Scene/Main Scene.unity
+    guid: 59e8bbf0dc4781d48ad29e17578cf62a
+  - enabled: 1
+    path: Assets/Hub/Hub.unity
+    guid: 41a6d4f4dd10e144f8f0165863d0cc93
+  - enabled: 1
+    path: Assets/Coffee/coffee.unity
+    guid: 6ff490dedb686fb4faa81f463836fa6b
+  - enabled: 1
+    path: Assets/Dance/Dance.unity
+    guid: 7b0599b3efa7cc34dbe3b3f717c78545
+  - enabled: 1
+    path: Assets/Phone_call/phone_call.unity
+    guid: c23c5202275ad91429ba4c2a4f85b5ab
+  - enabled: 1
+    path: Assets/Piano/Piano.unity
+    guid: f581f9b8e2cf59f42981b57f1c2d3c05
+  - enabled: 1
+    path: Assets/Radio/Radio.unity
+    guid: ccd4c9a62c569b24cbf955eb109fb209
   m_configObjects: {}

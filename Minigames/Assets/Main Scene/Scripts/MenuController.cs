@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 using UnityEngine.SceneManagement; 
-using UnityEngine.Audio; 
+using UnityEngine.Audio;
 
 public class MenuController : MonoBehaviour
 {
 
-
+    public bool isPauseMenu;
     public bool isOpened = false; //Открыто ли меню
     public float volume = 0; //Громкость
     public int quality = 0; //Качество
@@ -20,10 +20,32 @@ public class MenuController : MonoBehaviour
 
     public GameObject Settings;
     public GameObject Buttons;
+    public GameObject Menu;
+    public GameObject Canvas;
+    public GameObject otherMenu;
+
+    public void OpenClose_Menu() 
+    {
+        isOpened = !isOpened;
+        Menu.SetActive(isOpened);
+    }
+
+    public void ToHubRelocate ()
+    {
+        if (isPauseMenu)
+        {
+            Destroy(otherMenu);
+        }
+        SceneManager.LoadScene("Hub");
+        /*if (isPauseMenu) { DontDestroyOnLoad(GetComponent<Canvas>()); }*/
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
+        if (isPauseMenu) { DontDestroyOnLoad(Canvas); }
+        Menu.SetActive(isOpened);
         Settings.SetActive(false);
         GameObject[] timerObjects = GameObject.FindGameObjectsWithTag("Timer");
         foreach (var iterObject in timerObjects)
@@ -55,7 +77,13 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isPauseMenu && Input.GetKeyDown(KeyCode.Escape))
+        {
+            Settings.SetActive(false);
+            Buttons.SetActive(true);
+            OpenClose_Menu();
+
+        }
     }
 
     public void ChangeVolume(float val) //Изменение звука
@@ -103,7 +131,10 @@ public class MenuController : MonoBehaviour
         Buttons.SetActive(true);
     }
 
-
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("Main Scene"); //Переход на сцену с названием Menu
+    }
 
 
     public void Exit_Game()
