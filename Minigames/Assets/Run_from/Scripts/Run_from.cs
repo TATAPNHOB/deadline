@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Run_from : Minigame
 {
-    
-    public GameObject res_lbl;
-    GameObject Spawn;
+
+    GameObject Spawn1;
+    GameObject Spawn2;
     public GameObject Gen;
     public GameObject Enemy;
     public GameObject Player;
@@ -19,7 +19,7 @@ public class Run_from : Minigame
     // Start is called before the first frame update
     void Start()
     {
-        difficulty = 1;
+        difficulty = 3;
         switch(difficulty)
         {
             case 1:
@@ -32,6 +32,7 @@ public class Run_from : Minigame
                 spawn_speed = 1f;
                 break;
         }
+        //StartCoroutine("spawn");
         InvokeRepeating("Spawning", 1f, spawn_speed);
     }
 
@@ -53,7 +54,7 @@ public class Run_from : Minigame
     void OnCollisionEnter2D(Collision2D Coll)
     {
         
-        if (Coll.gameObject.tag == "Finish")
+        if (Coll.gameObject.tag == "Respawn")
         {
             //res_lbl.SetActive(true);
             Lose("YOU LOST");
@@ -62,26 +63,57 @@ public class Run_from : Minigame
 
     void Spawning()
     {
-        float x1 = Random.Range(Player.transform.position.x-10f, Player.transform.position.x+10f);
+        float x1 = Random.Range(Player.transform.position.x - 10f, Player.transform.position.x + 10f);
         float x2 = Random.Range(-55f, 55f);
         int enemy = Random.Range(1, 4);
+
         switch (enemy)
         {
             case 1:
-                Spawn = Instantiate(Enemy, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
-                Spawn = Instantiate(Enemy3, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
-                
+                Spawn1 = Instantiate(Enemy, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+                Spawn2 = Instantiate(Enemy3, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+
                 break;
             case 2:
-                Spawn = Instantiate(Enemy2, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
-                Spawn = Instantiate(Enemy, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+                Spawn1 = Instantiate(Enemy2, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+                Spawn2 = Instantiate(Enemy, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
                 break;
             case 3:
-                Spawn = Instantiate(Enemy3, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
-                Spawn = Instantiate(Enemy2, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+                Spawn1 = Instantiate(Enemy3, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+                Spawn2 = Instantiate(Enemy2, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
                 break;
         }
-            
-        
+
+
     }
+    //IEnumerator spawn()
+    //{
+    //    while(true)
+    //    {
+    //        float x1 = Random.Range(Player.transform.position.x - 10f, Player.transform.position.x + 10f);
+    //        float x2 = Random.Range(-55f, 55f);
+    //        int enemy = Random.Range(1, 4);
+    //        GameObject Spawn1 = null, Spawn2 = null;
+    //        switch (enemy)
+    //        {
+    //            case 1:
+    //                Spawn1 = Instantiate(Enemy, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+    //                Spawn2 = Instantiate(Enemy3, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+
+    //                break;
+    //            case 2:
+    //                Spawn1 = Instantiate(Enemy2, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+    //                Spawn2 = Instantiate(Enemy, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+    //                break;
+    //            case 3:
+    //                Spawn1 = Instantiate(Enemy3, new Vector3(x1, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+    //                Spawn2 = Instantiate(Enemy2, new Vector3(x2, Gen.transform.position.y, Gen.transform.position.z), Quaternion.identity) as GameObject;
+    //                break;
+    //        }
+    //        yield return new WaitForSeconds(spawn_speed);
+    //        Destroy(Spawn1);
+    //        Destroy(Spawn2);
+    //    }
+
+    //}
 }
