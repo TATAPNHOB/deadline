@@ -18,6 +18,8 @@ public class Minigame : MonoBehaviour
 
         public static bool IsRunning { get { return time > 0; } set { } }
 
+        public static bool IsPaused = false;
+
         static Timer()
         {
             
@@ -37,13 +39,14 @@ public class Minigame : MonoBehaviour
 
         public static void Reset()
         {
-            time = 10;
+            time = 60;
         }
 
 
         public static void Add_Time_For_Easy ()
         {
             time += 15;
+            Debug.Log("Added for easy");
         }
 
         public static void Add_Time_For_Medium ()
@@ -68,7 +71,7 @@ public class Minigame : MonoBehaviour
     }
     public UnityEngine.UI.Text label_timer;//счЄтчик таймера
     public Text result_timer;//результат ѕќЅ≈ƒџ или ѕќ–ј∆≈Ќ»я игры
-    public byte difficulty;
+    public byte difficulty=1;
 
     // Start is called before the first frame update
     void Start()
@@ -81,20 +84,31 @@ public class Minigame : MonoBehaviour
     protected void Update_MAIN()
     {
 
-        //(GameObject.Find("Label_Timer")).GetComponent<Text>().text = Timer.Update();
+        (GameObject.Find("Label_Timer")).GetComponent<Text>().text = Timer.Update();
         
         /*Debug.Log(label_timer.text);*/
-        if (!Timer.IsRunning) Lose("TIME IS OUT");
+        if (!Timer.IsRunning) Total_Lose();
     }
 
     protected void Lose(string message)
     {
+        (GameObject.Find("Result")).GetComponent<Text>().text = message;
         //result_timer.text = message;
         StartCoroutine(Blink(2f));
+
+    }
+    protected void Total_Lose()
+    {
+        (GameObject.Find("Result")).GetComponent<Text>().text = "Time is Out";
+        //result_timer.text = message;
+
+        GameObject.Find("Pause_Menu_Instance").GetComponent<MenuController>().For_total_lose();
+        Timer.Stop();
     }
     //1 - easy, 2 - norm, 3 - hard
     protected void Win()
     {
+        (GameObject.Find("Result")).GetComponent<Text>().text = "YOU WIN";
         switch (difficulty)
         {
             case 1:
@@ -116,6 +130,7 @@ public class Minigame : MonoBehaviour
     {
 
         yield return new WaitForSeconds(2);
+        (GameObject.Find("Result")).GetComponent<Text>().text = "";
         SceneManager.LoadScene("Hub");
 
 

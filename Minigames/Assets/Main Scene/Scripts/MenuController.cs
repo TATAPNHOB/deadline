@@ -25,7 +25,7 @@ public class MenuController : MonoBehaviour
     public GameObject otherMenu;
     public GameObject result_label;
     public GameObject Label_Timer;
-
+    public GameObject PanelAgain;
     private void Awake()
     {
         if (GameObject.FindGameObjectsWithTag("PauseMenu").Length>1)
@@ -57,9 +57,14 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         if (isPauseMenu) { DontDestroyOnLoad(Canvas); }
+        Debug.Log(this.gameObject.name);
+        PanelAgain.SetActive(false);
+
         Menu.SetActive(isOpened);
         Settings.SetActive(false);
+        Minigame.Timer.Reset();
         GameObject[] timerObjects = GameObject.FindGameObjectsWithTag("Timer");
         foreach (var iterObject in timerObjects)
         {
@@ -92,6 +97,7 @@ public class MenuController : MonoBehaviour
     {
         if (isPauseMenu && Input.GetKeyDown(KeyCode.Escape))
         {
+            Minigame.Timer.IsPaused= !Minigame.Timer.IsPaused;
             Settings.SetActive(false);
             Buttons.SetActive(true);
             OpenClose_Menu();
@@ -146,13 +152,32 @@ public class MenuController : MonoBehaviour
 
     public void GoToMainMenu()
     {
+
         SceneManager.LoadScene("Main Scene"); //Переход на сцену с названием Menu
+
+    }
+
+    public void GoToMainMenuAfterLose()
+    {
+        SceneManager.LoadScene("Main Scene"); //Переход на сцену с названием Menu
+        PanelAgain.SetActive(false);
+
     }
 
 
     public void Exit_Game()
     {
         Application.Quit();
+    }
+
+
+    public void For_total_lose()
+    {
+        (GameObject.Find("Result")).GetComponent<Text>().text = "Time is Out";
+        PanelAgain.SetActive(true);
+
+        
+
     }
 
 
