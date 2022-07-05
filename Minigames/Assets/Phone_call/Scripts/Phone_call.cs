@@ -89,7 +89,7 @@ public class Phone_call : Minigame
     }
     public void call_btn_click()
     {
-        float playerTime = Time.time;
+        /*float playerTime = Time.time;
         float error = playerTime-start_time;
         if(error>waitTime)
         {
@@ -103,8 +103,20 @@ public class Phone_call : Minigame
             }
             else
             {
+
                 res_lbl.text = "Молодец";
+                Win();
             }
+        }*/
+        if (calling_num != player_calling_num)
+        {
+            res_lbl.text = "Ошибка";
+        }
+        else
+        {
+
+            res_lbl.text = "Молодец";
+            Win();
         }
     }
     

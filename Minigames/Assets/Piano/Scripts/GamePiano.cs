@@ -51,11 +51,16 @@ public class GamePiano : Minigame
             if (check)
             {
                 textLABEL.text = "УРА! Отгадал!";
+                foreach (var iterNote in notes)
+                {
+                    iterNote.interactable = false;
+                }
+                Win();
             }
             else
             {
                 textLABEL.text = "Не угадал! Попробуй ещё раз!";
-                StartCoroutine(Blink(1.2f));
+                StartCoroutine(Blink(1f));
             }
         }
     }
@@ -64,8 +69,11 @@ public class GamePiano : Minigame
 
     private IEnumerator Blink(float waitTime)
     {
-        
-        yield return new WaitForSeconds(2);
+        foreach (var iterNote in notes)
+        {
+            iterNote.interactable = false;
+        }
+        yield return new WaitForSeconds(waitTime);
         /*foreach (var audioSource in ALLaudioSources)
         {
             audioSource.mute = !audioSource.mute;
@@ -75,6 +83,10 @@ public class GamePiano : Minigame
             SELECTED_notes[i].Play(1);
             yield return new WaitForSeconds(waitTime);
 
+        }
+        foreach (var iterNote in notes)
+        {
+            iterNote.interactable = true;
         }
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Run_from : MonoBehaviour
+public class Run_from : Minigame
 {
     
     public GameObject res_lbl;
@@ -13,13 +13,14 @@ public class Run_from : MonoBehaviour
     public GameObject Player;
     public GameObject Enemy2;
     public GameObject Enemy3;
-    int diff = 3;
+
     float spawn_speed;
 
     // Start is called before the first frame update
     void Start()
     {
-        switch(diff)
+        difficulty = 1;
+        switch(difficulty)
         {
             case 1:
                 spawn_speed = 1.5f;
@@ -37,6 +38,7 @@ public class Run_from : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.Update_MAIN();
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && Player.transform.position.x >= -55.6f)
         {
             Player.transform.position -= new Vector3(20f * Time.deltaTime, 0f, 0f);
@@ -53,7 +55,8 @@ public class Run_from : MonoBehaviour
         
         if (Coll.gameObject.tag == "Finish")
         {
-            res_lbl.SetActive(true);
+            //res_lbl.SetActive(true);
+            Lose("YOU LOST");
         }
     }
 

@@ -13,7 +13,7 @@ public class Slider : Minigame
     public AudioSource music;
     public Text res_lbl;
     public AudioSource noise;
-    int diff = 3;
+
     float range;
 
     void Start()
@@ -24,7 +24,11 @@ public class Slider : Minigame
         noise.volume = Mathf.Abs(herz - slider.transform.position.x) / 100f * 8.547f;
         noise.Play();
         music.Play();
-        switch(diff)
+
+        //временно
+        difficulty = 1;
+
+        switch(difficulty)
         {
             case 1:
                 range = 0.1f;
@@ -63,6 +67,7 @@ public class Slider : Minigame
         if (Mathf.Abs(herz - slider.transform.position.x) / 100f * 8.547f < range)
         {
             res_lbl.text = "U WON ZULUL";
+            Win();
         }
         else
         {
