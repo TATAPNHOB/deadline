@@ -7,11 +7,11 @@ using UnityEngine.Audio;
 
 public class MenuController : MonoBehaviour
 {
-
+    
     public bool isPauseMenu;
     public bool isOpened = false; //Открыто ли меню
     public float volume = 0; //Громкость
-    public int quality = 0; //Качество
+    //public int quality = 0; //Качество
     public bool isFullscreen = false; //Полноэкранный режим
     public AudioMixer audioMixer; //Регулятор громкости
     public Dropdown resolutionDropdown; //Список с разрешениями для игры
@@ -23,6 +23,16 @@ public class MenuController : MonoBehaviour
     public GameObject Menu;
     public GameObject Canvas;
     public GameObject otherMenu;
+    public GameObject result_label;
+    public GameObject Label_Timer;
+
+    private void Awake()
+    {
+        if (GameObject.FindGameObjectsWithTag("PauseMenu").Length>1)
+        {
+            Destroy(GameObject.FindGameObjectsWithTag("PauseMenu")[0]);
+        }
+    }
 
     public void OpenClose_Menu() 
     {
@@ -32,10 +42,13 @@ public class MenuController : MonoBehaviour
 
     public void ToHubRelocate ()
     {
-        if (isPauseMenu)
-        {
-            Destroy(otherMenu);
-        }
+        /*GameObject[] timer_labels = GameObject.FindGameObjectsWithTag("Timer");*/
+
+        Label_Timer.SetActive(true);
+        result_label.SetActive(true);
+
+        Object.Destroy(this.gameObject);
+        
         SceneManager.LoadScene("Hub");
         /*if (isPauseMenu) { DontDestroyOnLoad(GetComponent<Canvas>()); }*/
     }
@@ -104,10 +117,10 @@ public class MenuController : MonoBehaviour
         isFullscreen = !isFullscreen;
     }
 
-    public void ChangeQuality(int index) //Изменение качества
+    /*public void ChangeQuality(int index) //Изменение качества
     {
         quality = index;
-    }
+    }*/
 
     public void Open_Settings_Menu()
     {
@@ -141,4 +154,7 @@ public class MenuController : MonoBehaviour
     {
         Application.Quit();
     }
+
+
+
 }

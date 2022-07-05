@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Phone_call : MonoBehaviour
+public class Phone_call : Minigame
 {
     public Text Name_1,Name_2,Name_3,Name_4,Name_5,Name_6,Name_7,Name_8,Name_9,Name_10,Name_11,Name_12,Name_13,Name_14,Name_15;
     public Text Calling_number;
@@ -43,7 +43,10 @@ public class Phone_call : MonoBehaviour
         start_time=Time.time;
     }
 
-
+    private void Update()
+    {
+        base.Update_MAIN();
+    }
     public void num_click(int num)
     {
         if(num_len<7)

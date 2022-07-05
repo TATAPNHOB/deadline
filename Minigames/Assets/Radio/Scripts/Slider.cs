@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Slider : MonoBehaviour
+public class Slider : Minigame
 {
     public GameObject slider;
     public GameObject handle;
@@ -27,6 +27,7 @@ public class Slider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        base.Update_MAIN();
         if (Input.GetKey(KeyCode.Q)&&slider.transform.position.x> -5.852535f)
         {
             slider.transform.position += Vector3.left*0.003f;

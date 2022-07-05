@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeatScroller : MonoBehaviour
+public class BeatScroller : Minigame
 {
     public float beatTemp;
     public GameObject[] Arrows;
@@ -22,7 +22,7 @@ public class BeatScroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        base.Update_MAIN();
         //Instantiate(brick);
         
 
