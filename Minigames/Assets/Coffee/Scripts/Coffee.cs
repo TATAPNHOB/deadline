@@ -7,7 +7,6 @@ public class Coffee : Minigame
 {
     public Text time_lbl;
     public Text res_lbl;
-    int diff = 3;
     int waitTime;
     float delayTime = 4;
     float startTime;
@@ -19,7 +18,7 @@ public class Coffee : Minigame
     void Start()
     {
         Invoke("SetNewRandomTime",delayTime);
-        switch(diff)
+        switch(difficulty)
         {
             case 1:
                 range = 1f;
@@ -31,6 +30,7 @@ public class Coffee : Minigame
                 range = 0.2f;
                 break;
         }
+        range = 10f;
     }
 
     public void Stop_coffee(){
@@ -40,15 +40,18 @@ public class Coffee : Minigame
         {
             res_lbl.text = $"Переварил {-error} секунд";
             machine.sprite = over_sprite;
+            Lose($"Переварил {-error} секунд");
         }
         else if(error>range)
         {
             res_lbl.text = $"Недоварил {error} секунд";
             machine.sprite = under_sprite;
+            Lose($"Недоварил {error} секунд");
         }
         else
         {
             res_lbl.text = "Спасибо за кофе!";
+            Win();
         }
     }
     void SetNewRandomTime()

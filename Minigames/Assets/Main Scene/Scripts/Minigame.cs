@@ -84,12 +84,13 @@ public class Minigame : MonoBehaviour
         //(GameObject.Find("Label_Timer")).GetComponent<Text>().text = Timer.Update();
         
         /*Debug.Log(label_timer.text);*/
-        if (!Timer.IsRunning) Lose();
+        if (!Timer.IsRunning) Lose("TIME IS OUT");
     }
 
-    protected void Lose()
+    protected void Lose(string message)
     {
-        result_timer.text = "YOU ARE LOSE";
+        //result_timer.text = message;
+        StartCoroutine(Blink(2f));
     }
     //1 - easy, 2 - norm, 3 - hard
     protected void Win()
@@ -108,7 +109,15 @@ public class Minigame : MonoBehaviour
             default:
                 break;
         }
-        SceneManager.LoadScene("Hub");
+        StartCoroutine(Blink(2f));
+        
     }
+    private IEnumerator Blink(float waitTime)
+    {
 
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Hub");
+
+
+    }
 }
