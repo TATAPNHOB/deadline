@@ -13,11 +13,27 @@ public class Spacer : MonoBehaviour
     public GameObject yeet2;
     public GameObject emptygen;
 
+    int diff = 1;
+    float speed;
+
     // Start is called before the first frame update
     void Start()
     {
         IJ = false;
         InvokeRepeating("start_lvl", 1, 2.5f);
+
+        switch (diff)
+        {
+            case 1:
+                speed = 4f;
+                break;
+            case 2:
+                speed = 8f;
+                break;
+            case 3:
+                speed = 12f;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -25,18 +41,18 @@ public class Spacer : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space)&&!IJ)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 7, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 6.7f, 0);
             IJ = true;
         }
         
 
-        yeet1.transform.position -= new Vector3(6f * Time.deltaTime, 0, 0);
+        yeet1.transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
         if (yeet1.transform.position.x <= -19.62f)
         {
             yeet1.transform.position = new Vector3(19.62f, yeet1.transform.position.y, 0f);
         }
 
-        yeet2.transform.position -= new Vector3(6f * Time.deltaTime, 0, 0);
+        yeet2.transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
         if (yeet2.transform.position.x <= -19.62f)
         {
             yeet2.transform.position = new Vector3(19.62f, yeet2.transform.position.y, 0f);

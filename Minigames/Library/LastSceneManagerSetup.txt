@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Coffee/coffee.unity
+- path: Assets/Run_from/Run_from.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

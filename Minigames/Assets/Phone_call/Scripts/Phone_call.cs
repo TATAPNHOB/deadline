@@ -11,10 +11,10 @@ public class Phone_call : Minigame
     string calling_num;//Правильный номер
     int num_len;
     string player_calling_num;//Номер, который набирает игрок
-
+    
     float start_time;
-    int waitTime=60;
-
+    int waitTime;
+    int diff = 3;
     public Text res_lbl;
     void Start()
     {
@@ -41,6 +41,18 @@ public class Phone_call : Minigame
         Calling_name.text = "Позвони "+names[calling_ind];
         calling_num = numbers[calling_ind].ToString();
         start_time=Time.time;
+        switch(diff)
+        {
+            case 1:
+                waitTime = 15;
+                break;
+            case 2:
+                waitTime = 12;
+                break;
+            case 3:
+                waitTime = 9;
+                break;
+        }
     }
 
     private void Update()
@@ -51,18 +63,7 @@ public class Phone_call : Minigame
     {
         if(num_len<7)
         {
-            //if(player_calling_num!=0)
-            //{
-            //    player_calling_num*=10;
-            //    player_calling_num+=num;
-            //}
-            //else
-            //{
-            //    player_calling_num+=num;
-            //}
-            //num_len++;
-            //Calling_number.text = player_calling_num.ToString();
-            //print(player_calling_num);
+
             num_len++;
             player_calling_num+=num.ToString();
             Calling_number.text = player_calling_num;
@@ -73,18 +74,6 @@ public class Phone_call : Minigame
     }
     public void del_click()
     {
-        //if(num_len>1)
-        //{
-            //num_len--;
-            //player_calling_num=(player_calling_num-player_calling_num%10)/10;
-            //Calling_number.text = player_calling_num.ToString();
-        //}
-        //else if(num_len==1)
-        //{
-           // player_calling_num=0;
-           // num_len--;
-           // Calling_number.text="";
-        //}
         if(num_len>0)
         {
             num_len--;
