@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyToPress: 276
   ableToPressed: 0
+  noteSound: {fileID: 8300000, guid: 230164f243d107b499286f7ac375ccec, type: 3}
+  noteAudioSource: {fileID: 0}
 --- !u!61 &768351006250305378
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -7,14 +7,19 @@ public class BeatScroller : Minigame
 {
     public float beatTemp;
     public GameObject[] Arrows;
+    public int beatedNotes;
+    
 
-
-    public bool IsStarted;
     // Start is called before the first frame update
     void Start()
     {
         beatTemp = beatTemp / 60f;
-        
+        beatedNotes = 0;
+    }
+
+    public void inc_beatedNotes()
+    {
+        beatedNotes++;
     }
 
     System.Random rnd = new System.Random();
@@ -24,17 +29,13 @@ public class BeatScroller : Minigame
     {
         base.Update_MAIN();
         //Instantiate(brick);
-        
-
-        if (!IsStarted)
+        if (beatedNotes>=10)
         {
-            if (Input.anyKeyDown)
-            {
-                IsStarted=!IsStarted;
-            }
+            this.Win();
         }
-        else
-        {
+        
+        
+            
             time_by_second -= Time.deltaTime;
 
             if (time_by_second <= 0)
@@ -43,7 +44,7 @@ public class BeatScroller : Minigame
 
                 newOBJ.SetParent(this.transform);
 
-                time_by_second = 3f;
+                time_by_second = 0.7f;
             }
 
             Transform[] Childs = GetComponentsInChildren<Transform>();
@@ -72,7 +73,7 @@ public class BeatScroller : Minigame
             
             
 
-        }
+        
 
     }
     

@@ -7,10 +7,14 @@ public class NoteObject : MonoBehaviour
     //список для деактивированных стрелочек для их удаления или типа того
     public KeyCode keyToPress;
     public bool ableToPressed;
+    GameObject parent;
+    public AudioClip noteSound;
+    public AudioSource noteAudioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        parent = GameObject.Find("NoteHolder");
+        noteAudioSource = GameObject.Find("NoteSound").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,7 +24,12 @@ public class NoteObject : MonoBehaviour
         {
             if (ableToPressed)
             {
+                Debug.Log("Hitted");
+                parent.GetComponent<BeatScroller>().inc_beatedNotes();
+
+                noteAudioSource.PlayOneShot(noteSound);
                 gameObject.SetActive(false);
+
             }
         }
     }

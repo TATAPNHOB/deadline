@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class Minigame : MonoBehaviour
 {
@@ -67,7 +68,7 @@ public class Minigame : MonoBehaviour
     }
     public UnityEngine.UI.Text label_timer;//счЄтчик таймера
     public Text result_timer;//результат ѕќЅ≈ƒџ или ѕќ–ј∆≈Ќ»я игры
-
+    public byte difficulty;
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +81,7 @@ public class Minigame : MonoBehaviour
     protected void Update_MAIN()
     {
 
-        (GameObject.Find("Label_Timer")).GetComponent<Text>().text = Timer.Update();
+        //(GameObject.Find("Label_Timer")).GetComponent<Text>().text = Timer.Update();
         
         /*Debug.Log(label_timer.text);*/
         if (!Timer.IsRunning) Lose();
@@ -90,9 +91,24 @@ public class Minigame : MonoBehaviour
     {
         result_timer.text = "YOU ARE LOSE";
     }
-
+    //1 - easy, 2 - norm, 3 - hard
     protected void Win()
     {
-        //
+        switch (difficulty)
+        {
+            case 1:
+                Timer.Add_Time_For_Easy();
+                break;
+            case 2:
+                Timer.Add_Time_For_Medium();
+                break;
+            case 3:
+                Timer.Add_Time_For_Hard();
+                break;
+            default:
+                break;
+        }
+        SceneManager.LoadScene("Hub");
     }
+
 }
