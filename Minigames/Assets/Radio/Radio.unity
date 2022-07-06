@@ -474,7 +474,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 08216fe069fba9f4a9aa0eafa247515b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7755eaa65786c7b46841608b1d53629a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -847,6 +847,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa0aaa04d703e74bbb3a4c1406f2b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label_timer: {fileID: 0}
+  result_timer: {fileID: 0}
+  difficulty: 1
   slider: {fileID: 1734203842}
   handle: {fileID: 319094753}
   startRotation: {x: 0, y: 0, z: 180}

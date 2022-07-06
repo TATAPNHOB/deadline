@@ -1045,6 +1045,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda19f9001ea46646b827083c2c8828e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label_timer: {fileID: 0}
+  result_timer: {fileID: 0}
+  difficulty: 1
   card1: {fileID: 1651366778}
   forCard1: {fileID: 21300000, guid: ac9f1be63df192e428ee9aa1154a3795, type: 3}
   Minigames:
@@ -1053,6 +1056,8 @@ MonoBehaviour:
   - Phone_call
   - Piano
   - Radio
+  - Spacer
+  - Run_from
 --- !u!1 &1334399813
 GameObject:
   m_ObjectHideFlags: 0
