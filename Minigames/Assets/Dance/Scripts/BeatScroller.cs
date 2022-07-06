@@ -27,6 +27,7 @@ public class BeatScroller : Minigame
     // Update is called once per frame
     void Update()
     {
+        if (Minigame.Timer.IsPaused) return;
         base.Update_MAIN();
         //Instantiate(brick);
         if (beatedNotes>=10)

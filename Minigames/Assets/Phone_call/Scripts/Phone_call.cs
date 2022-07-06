@@ -38,8 +38,8 @@ public class Phone_call : Minigame
             stroki[i].text=names[i]+" "+numbers[i].ToString();
         }
         int calling_ind = Random.Range(1,16);
-        Calling_name.text = "Позвони "+names[calling_ind];
-        calling_num = numbers[calling_ind].ToString();
+        Calling_name.text = "Позвони "+names[calling_ind-1];
+        calling_num = numbers[calling_ind-1].ToString();
         start_time=Time.time;
         switch(diff)
         {
@@ -57,6 +57,7 @@ public class Phone_call : Minigame
 
     private void Update()
     {
+        if (Minigame.Timer.IsPaused) return;
         base.Update_MAIN();
     }
     public void num_click(int num)

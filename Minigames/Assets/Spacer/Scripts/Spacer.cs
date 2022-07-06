@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Spacer : MonoBehaviour
+public class Spacer : Minigame
 {
     public bool IJ;
     public GameObject res_lbl;
@@ -39,6 +39,8 @@ public class Spacer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Minigame.Timer.IsPaused) return;
+        base.Update_MAIN();
         if(Input.GetKey(KeyCode.Space)&&!IJ)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector3(0, 6.7f, 0);
@@ -64,10 +66,12 @@ public class Spacer : MonoBehaviour
         if(Coll.gameObject.tag=="Finish")
         {
             IJ = false;
+            
         }
         if (Coll.gameObject.tag == "Respawn")
         {
             res_lbl.SetActive(true);
+            Lose("");
         }
     }
     void start_lvl()

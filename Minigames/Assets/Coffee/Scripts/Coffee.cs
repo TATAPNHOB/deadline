@@ -30,7 +30,7 @@ public class Coffee : Minigame
                 range = 0.2f;
                 break;
         }
-        range = 10f;
+        
     }
 
     public void Stop_coffee(){
@@ -62,6 +62,7 @@ public class Coffee : Minigame
     }
     private void Update()
     {
+        if (Minigame.Timer.IsPaused) return;
         base.Update_MAIN();
     }
 }

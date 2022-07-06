@@ -34,6 +34,7 @@ public class GamePiano : Minigame
     // Update is called once per frame
     void Update()
     {
+        if (Minigame.Timer.IsPaused) return;
         base.Update_MAIN();
         if (index_playing_note==SELECTED_notes.Length)
         {

@@ -45,6 +45,7 @@ public class Slider : Minigame
     // Update is called once per frame
     void Update()
     {
+        if (Minigame.Timer.IsPaused) return;
         base.Update_MAIN();
         if (Input.GetKey(KeyCode.Q)&&slider.transform.position.x> -5.852535f)
         {

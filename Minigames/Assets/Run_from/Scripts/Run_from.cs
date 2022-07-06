@@ -39,6 +39,7 @@ public class Run_from : Minigame
     // Update is called once per frame
     void Update()
     {
+        if (Minigame.Timer.IsPaused) return;
         this.Update_MAIN();
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && Player.transform.position.x >= -55.6f)
         {
@@ -58,6 +59,7 @@ public class Run_from : Minigame
         {
             //res_lbl.SetActive(true);
             Lose("YOU LOST");
+            
         }
     }
 
